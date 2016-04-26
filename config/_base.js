@@ -37,15 +37,6 @@ const config = {
     colors : true
   },
   compiler_vendor : [
-  ],
-
-  // ----------------------------------
-  // Test Configuration
-  // ----------------------------------
-  coverage_enabled   : !argv.watch,
-  coverage_reporters : [
-    { type : 'text-summary' },
-    { type : 'lcov', dir : 'coverage' }
   ]
 }
 
