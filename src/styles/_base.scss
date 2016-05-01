@@ -1,19 +1,20 @@
-/*
-Application Settings Go Here
-------------------------------------
-This file acts as a bundler for all variables/mixins/themes, so they
-can easily be swapped out without `core.scss` ever having to know.
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
-For example:
+a,
+a:visited,
+a:link,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
 
-@import './variables/colors';
-@import './variables/components';
-@import './themes/default';
-*/
-
-#root{
-  border: 1px solid #000;
-  width: 200px;
-  height: 500px;
-  display: block;
+ul {
+  list-style: none;
 }

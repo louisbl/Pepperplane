@@ -1,23 +1,23 @@
 :global {
-  @import 'base';
+  /*
+  *   Config
+  */
+  @import 'config/colors';
+
+  /*
+  *   Utils
+  */
+  @import 'utils/mixins';
+
+  /*
+  *   Resets
+  */
   @import '~normalize.css/normalize';
+  @import 'base';
 
-  // Some best-practice CSS that's useful for most apps
-  // Just remove them if they're not what you want
-  html {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-  }
-
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
+  /*
+  *   Partials
+  */
+  @import 'partials/header';
+  @import 'partials/footer';
 }
