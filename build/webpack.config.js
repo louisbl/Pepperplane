@@ -16,14 +16,14 @@ const webpackConfig = {
   devtool: config.compiler_devtool,
   resolve: {
     root: paths.client(),
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['', '.js', '.json']
   },
   module: {}
 }
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY_PATH = paths.client('main.js')
+const APP_ENTRY_PATH = paths.client('js/main.js')
 
 webpackConfig.entry = {
   app: __DEV__
@@ -119,7 +119,7 @@ webpackConfig.eslint = {
 // ------------------------------------
 // JavaScript / JSON
 webpackConfig.module.loaders = [{
-  test: /\.(js|jsx)$/,
+  test: /\.js$/,
   exclude: /node_modules/,
   loader: 'babel',
   query: {
