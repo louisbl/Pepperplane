@@ -2,6 +2,7 @@ import webpack from 'webpack'
 import cssnano from 'cssnano'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 import config from '../config'
 import _debug from 'debug'
 
@@ -51,10 +52,16 @@ webpackConfig.plugins = [
     hash: false,
     favicon: paths.client('static/favicon.ico'),
     filename: 'index.html',
-    inject: 'body',
-    minify: {
-      collapseWhitespace: true
-    }
+    inject: 'body'
+    // minify: {
+    //   collapseWhitespace: true
+    // }
+  }),
+  new FaviconsWebpackPlugin({
+    logo: 'static/icon.png',
+    inject: true,
+    emitStats: false,
+    title: 'My awesome App'
   })
 ]
 
@@ -92,27 +99,27 @@ if (!__TEST__) {
 // Pre-Loaders
 // ------------------------------------
 /*
-[ NOTE ]
-We no longer use eslint-loader due to it severely impacting build
-times for larger projects. `npm run lint` still exists to aid in
-deploy processes (such as with CI), and it's recommended that you
-use a linting plugin for your IDE in place of this loader.
+ [ NOTE ]
+ We no longer use eslint-loader due to it severely impacting build
+ times for larger projects. `npm run lint` still exists to aid in
+ deploy processes (such as with CI), and it's recommended that you
+ use a linting plugin for your IDE in place of this loader.
 
-If you do wish to continue using the loader, you can uncomment
-the code below and run `npm i --save-dev eslint-loader`. This code
-will be removed in a future release.
+ If you do wish to continue using the loader, you can uncomment
+ the code below and run `npm i --save-dev eslint-loader`. This code
+ will be removed in a future release.
 
-webpackConfig.module.preLoaders = [{
-  test: /\.(js|jsx)$/,
-  loader: 'eslint',
-  exclude: /node_modules/
-}]
+ webpackConfig.module.preLoaders = [{
+ test: /\.(js|jsx)$/,
+ loader: 'eslint',
+ exclude: /node_modules/
+ }]
 
-webpackConfig.eslint = {
-  configFile: paths.base('.eslintrc'),
-  emitWarning: __DEV__
-}
-*/
+ webpackConfig.eslint = {
+ configFile: paths.base('.eslintrc'),
+ emitWarning: __DEV__
+ }
+ */
 
 // ------------------------------------
 // Loaders
@@ -128,10 +135,10 @@ webpackConfig.module.loaders = [{
     presets: ['es2015', 'stage-0']
   }
 },
-{
-  test: /\.json$/,
-  loader: 'json'
-}]
+  {
+    test: /\.json$/,
+    loader: 'json'
+  }]
 
 // ------------------------------------
 // Style Loaders
@@ -235,13 +242,22 @@ webpackConfig.postcss = [
 // File loaders
 /* eslint-disable */
 webpackConfig.module.loaders.push(
-  { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
-  { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
-  { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
-  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
-  { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
-  { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
+  {
+    test: /\.woff(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff'
+  },
+  {
+    test: /\.woff2(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2'
+  },
+  {test: /\.otf(\?.*)?$/, loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype'},
+  {
+    test: /\.ttf(\?.*)?$/,
+    loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream'
+  },
+  {test: /\.eot(\?.*)?$/, loader: 'file?prefix=fonts/&name=[path][name].[ext]'},
+  {test: /\.svg(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml'},
+  {test: /\.(png|jpg)$/, loader: 'url?limit=8192'}
 )
 /* eslint-enable */
 
