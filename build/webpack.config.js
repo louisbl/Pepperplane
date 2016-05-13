@@ -50,18 +50,12 @@ webpackConfig.plugins = [
   new HtmlWebpackPlugin({
     template: paths.client('index.html'),
     hash: false,
-    favicon: paths.client('static/favicon.ico'),
+    favicon: paths.client('static/icon.png'),
     filename: 'index.html',
     inject: 'body'
     // minify: {
     //   collapseWhitespace: true
     // }
-  }),
-  new FaviconsWebpackPlugin({
-    logo: 'static/icon.png',
-    inject: true,
-    emitStats: false,
-    title: 'My awesome App'
   })
 ]
 
@@ -82,6 +76,12 @@ if (__DEV__) {
         dead_code: true,
         warnings: false
       }
+    }),
+    new FaviconsWebpackPlugin({
+      logo: 'static/icon.png',
+      inject: true,
+      emitStats: false,
+      title: 'My awesome App'
     })
   )
 }
