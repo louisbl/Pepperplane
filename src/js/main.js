@@ -1,5 +1,5 @@
-import '../styles/core.scss';
+import '../styles/core.scss'
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }
