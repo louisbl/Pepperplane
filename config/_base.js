@@ -2,6 +2,7 @@
 import _debug from 'debug'
 import path from 'path'
 import { argv } from 'yargs'
+import localIp from 'my-local-ip'
 
 const debug = _debug('app:config:_base')
 const config = {
@@ -19,7 +20,7 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : 'localhost',
+  server_host : localIp(),
   server_port : process.env.PORT || 3000,
 
   // ----------------------------------
