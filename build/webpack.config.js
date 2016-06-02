@@ -102,7 +102,7 @@ if (!__TEST__) {
  webpackConfig.module.preLoaders = [{
  test: /\.(js|jsx)$/,
  loader: 'eslint',
- exclude: /node_modules/
+ exclude: [/node_modules/, paths.client('js/lib')]
  }]
 
  webpackConfig.eslint = {
