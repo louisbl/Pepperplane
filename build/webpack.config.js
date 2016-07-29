@@ -56,6 +56,10 @@ webpackConfig.plugins = [
     minify: {
       collapseWhitespace: true
     }
+  }),
+  new webpack.ProvidePlugin({
+    Promise: 'bluebird',
+    debug: 'debug'
   })
 ]
 
