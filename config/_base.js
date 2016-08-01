@@ -37,9 +37,7 @@ const config = {
     chunkModules : false,
     colors : true
   },
-  compiler_vendor : [
-    'lodash'
-  ]
+  compiler_vendor : []
 }
 
 /************************************************
