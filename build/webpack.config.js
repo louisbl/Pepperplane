@@ -48,7 +48,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
   new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
-    template: paths.client('index.html'),
+    template: paths.client('index.pug'),
     hash: false,
     favicon: paths.client('static/icon.png'),
     filename: 'index.html',
@@ -133,6 +133,12 @@ webpackConfig.module.loaders = [{
     test: /\.json$/,
     loader: 'json'
   }]
+
+// HTML / Jade
+webpackConfig.module.loaders.push({
+      test: /\.pug$/,
+      loader: 'pug'
+  })
 
 // ------------------------------------
 // Style Loaders
