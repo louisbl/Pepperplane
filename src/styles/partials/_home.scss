@@ -1,0 +1,32 @@
+#app {
+  &:before, &:after {
+    content: '';
+    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    top: 5vh;
+    left: 5vw;
+    background-color: rgb(45, 45, 45);
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  &:before {
+    left: calc(5vw + 1px);
+    clip-path: polygon(100% 100%, 0 0, 0 100%);
+  }
+
+  &:after {
+    clip-path: polygon(100% 100%, 100% 0, 0 0);
+  }
+
+  &.active {
+    &:before {
+      left: -30vw;
+    }
+
+    &:after {
+      left: 30vw;
+    }
+  }
+}
