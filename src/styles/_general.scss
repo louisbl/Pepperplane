@@ -1,3 +1,14 @@
 html, body {
   background-color: #efefef;
 }
+
+$intervalTop: 60px;
+$intervalLeft: 70px;
+
+.centered {
+  position: absolute;
+  top: $intervalTop;
+  right: $intervalLeft;
+  bottom: $intervalTop;
+  left: $intervalLeft;
+}
