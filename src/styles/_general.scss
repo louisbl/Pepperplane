@@ -1,14 +1,45 @@
 html, body {
   background-color: #efefef;
+  //overflow: hidden;
 }
 
 $intervalTop: 60px;
 $intervalLeft: 70px;
 
 .centered {
-  position: absolute;
+  position: fixed;
   top: $intervalTop;
   right: $intervalLeft;
   bottom: $intervalTop;
   left: $intervalLeft;
+}
+
+.load {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #2d2d2d;
+  z-index: 1000;
+}
+
+.mouse__scroll {
+  position: fixed;
+  z-index: 5;
+  left: 50%;
+  bottom: 100px;
+  transform: translate(-50%, 0);
+  height: 50px;
+  width: 30px;
+  border-radius: 15px;
+  border: 2px solid #ddd;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 20px;
+    background-color: #ddd;
+  }
 }

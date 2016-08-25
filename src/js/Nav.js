@@ -1,10 +1,11 @@
-import TweenMax from '../../node_modules/gsap/src/minified/TweenMax.min'
+let navListAnimations
 
 export default class Menu {
   constructor () {
     this.initElements()
     this.initEvents()
     this.setBorderSize()
+
     TweenMax.set(this.$els.navLinks, {autoAlpha: 0})
   }
 
@@ -22,17 +23,24 @@ export default class Menu {
   }
 
   setBorderSize () {
-    this.$els.nav.style.borderWidth = `${((window.innerHeight - 120) / 2) + 1}px`
+    if (window.innerHeight < window.innerWidth) {
+      this.$els.nav.style.borderWidth = `${((window.innerHeight - 120) / 2) + 1}px`
+    } else {
+      this.$els.nav.style.borderWidth = `${((window.innerWidth - 140) / 2) + 1}px`
+    }
   }
 
   onMenuTriggerClick () {
     this.$els.nav.classList.toggle('active')
     this.$els.navTrigger.classList.toggle('active')
 
-    if (this.$els.nav.classList.contains('active')) {
-      TweenMax.staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, force3D: false, ease: Power3.easeOut, delay: 0.5}, 0.3)
+    if (this.$els.navTrigger.classList.contains('active')) {
+      navListAnimations = TweenMax.staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, force3D: false, ease: Power3.easeOut, delay: 0.5}, 0.3)
     } else {
-      TweenMax.to(this.$els.navLinks, 0.2, {autoAlpha: 0})
+      TweenMax.to(this.$els.navLinks, 0.1, {autoAlpha: 0})
+      navListAnimations.forEach((tween) => {
+        tween.kill()
+      })
     }
   }
 }
