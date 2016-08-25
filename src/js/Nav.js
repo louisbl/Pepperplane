@@ -7,7 +7,7 @@ export default class Menu {
     TweenMax.set(this.$els.navLinks, {autoAlpha: 0})
 
     this.openTimeline = new TimelineMax({paused: true})
-      .fromTo('nav', 0.4, {autoAlpha: 0}, {height: '90vh', width: '90vw', autoAlpha: 1, ease: Power1.easeIn}, 'start')
+      .fromTo('nav', 0.4, {autoAlpha: 0}, {height: '90vh', width: '89vw', autoAlpha: 1, ease: Power1.easeIn}, 'start')
       .to('main', 0.4, {scale: 1.15, ease: Power1.easeIn}, 'start')
       .addCallback(this.toggleTriggerClass.bind(this), 'start+=0.5')
       .staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, ease: Power3.easeOut}, 0.3, 'start+=1')
