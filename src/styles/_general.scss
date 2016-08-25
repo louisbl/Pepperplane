@@ -5,14 +5,6 @@ html, body {
 $intervalTop: 60px;
 $intervalLeft: 70px;
 
-.centered {
-  position: fixed;
-  top: $intervalTop;
-  right: $intervalLeft;
-  bottom: $intervalTop;
-  left: $intervalLeft;
-}
-
 main {
   position: fixed;
   top: 5vh;
