@@ -10,10 +10,11 @@ if (module.hot) {
 }
 
 domready(() => {
+  // remove loader & animate mouse
   new TimelineMax()
     .to('.loader', 0.5, {top: -50, delay: 2, ease: Power3.easeIn})
     .to('.load', 0.2, {autoAlpha: 0})
-    .to('.mouse__scroll', 0.8, {y: 10, repeat: 5, yoyo: true, ease: Power1.easeInOut}, '+=2')
+    .to('.mouse__scroll', 0.8, {y: 20, repeat: 8, yoyo: true, ease: Power1.easeInOut}, '+=2')
   new Nav()
 })
 
