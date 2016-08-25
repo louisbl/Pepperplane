@@ -1,12 +1,16 @@
-let navListAnimations
-
 export default class Menu {
   constructor () {
     this.initElements()
     this.initEvents()
-    this.setBorderSize()
+    this.open = false
 
     TweenMax.set(this.$els.navLinks, {autoAlpha: 0})
+
+    this.openTimeline = new TimelineMax({paused: true})
+      .fromTo('nav', 0.4, {autoAlpha: 0}, {height: '90vh', width: '90vw', autoAlpha: 1, ease: Power1.easeIn}, 'start')
+      .to('main', 0.4, {scale: 1.15, ease: Power1.easeIn}, 'start')
+      .addCallback(this.toggleTriggerClass.bind(this), 'start+=0.5')
+      .staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, ease: Power3.easeOut}, 0.3, 'start+=1')
   }
 
   initElements () {
@@ -18,29 +22,20 @@ export default class Menu {
   }
 
   initEvents () {
-    window.addEventListener('resize', this.setBorderSize.bind(this))
     this.$els.navTrigger.addEventListener('click', this.onMenuTriggerClick.bind(this))
   }
 
-  setBorderSize () {
-    if (window.innerHeight < window.innerWidth) {
-      this.$els.nav.style.borderWidth = `${((window.innerHeight - 120) / 2) + 1}px`
+  onMenuTriggerClick () {
+    if (!this.open) {
+      this.openTimeline.timeScale(1).play()
     } else {
-      this.$els.nav.style.borderWidth = `${((window.innerWidth - 140) / 2) + 1}px`
+      this.openTimeline.timeScale(1.3).reverse()
     }
+
+    this.open = !this.open
   }
 
-  onMenuTriggerClick () {
-    this.$els.nav.classList.toggle('active')
+  toggleTriggerClass () {
     this.$els.navTrigger.classList.toggle('active')
-
-    if (this.$els.navTrigger.classList.contains('active')) {
-      navListAnimations = TweenMax.staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, force3D: false, ease: Power3.easeOut, delay: 0.5}, 0.3)
-    } else {
-      TweenMax.to(this.$els.navLinks, 0.1, {autoAlpha: 0})
-      navListAnimations.forEach((tween) => {
-        tween.kill()
-      })
-    }
   }
 }

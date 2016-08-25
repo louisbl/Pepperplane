@@ -1,6 +1,5 @@
 html, body {
   background-color: #efefef;
-  //overflow: hidden;
 }
 
 $intervalTop: 60px;
@@ -12,6 +11,15 @@ $intervalLeft: 70px;
   right: $intervalLeft;
   bottom: $intervalTop;
   left: $intervalLeft;
+}
+
+main {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  background-color: #2d2d2d;
 }
 
 .load {

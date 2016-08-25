@@ -6,7 +6,7 @@ $menu: 3px;
   height: 5px;
   width: 50px;
   top: 50%;
-  left: 10px;
+  left: calc((5vw - 50px) / 2);
   background-color: #8A6343;
   cursor: pointer;
   transition: all 0.25s;
@@ -56,19 +56,17 @@ $menu: 3px;
 }
 
 nav {
-  border: 250px solid #2d2d2d;
-  transition: all 0.25s ease-in-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  height: 0;
+  width: 0;
+  z-index: 5;
+}
 
-  &.active {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-top: 75px solid #2d2d2d !important;
-    border-bottom: 75px solid #2d2d2d !important;
-    border-left: 85px solid #2d2d2d !important;
-    border-right: 85px solid #2d2d2d !important;
-  }
+nav {
 
   ul.nav__content {
     position: absolute;

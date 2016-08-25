@@ -3,6 +3,8 @@ import domready from 'domready'
 import Nav from './Nav'
 import 'gsap'
 
+CSSPlugin.defaultForce3D = false
+
 if (module.hot) {
   module.hot.accept()
 }
