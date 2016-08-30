@@ -7,7 +7,7 @@ $menu: 3px;
   width: 50px;
   top: 50%;
   left: calc((5vw - 50px) / 2);
-  background-color: #8A6343;
+  background-color: #52616B;
   cursor: pointer;
   transition: all 0.25s;
   z-index: 10;
@@ -18,7 +18,7 @@ $menu: 3px;
     left: 50%;
     height: 5px;
     width: 50px;
-    background-color: #8A6343;
+    background-color: #52616B;
     transition: all 0.25s;
   }
 
@@ -60,7 +60,7 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: #C9D6DF;
   height: 0;
   width: 0;
   z-index: 5;

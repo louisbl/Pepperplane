@@ -1,17 +1,34 @@
 html, body {
-  background-color: #efefef;
+  background-color: #C9D6DF;
 }
 
-$intervalTop: 60px;
-$intervalLeft: 70px;
+section {
+  height: 100%;
+  width: 100%;
+  &:nth-child(1) {
+    background-color: #eee;
+  }
+
+  &:nth-child(2) {
+    background-color: #aaa;
+  }
+}
+
+.section__wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  overflow-y: scroll;
+}
 
 main {
+  overflow-x: hidden;
   position: fixed;
   top: 5vh;
   left: 5vw;
   width: 90vw;
   height: 90vh;
-  background-color: #2d2d2d;
+  background-color: #1E2022;
 }
 
 .load {
