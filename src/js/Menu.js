@@ -1,12 +1,16 @@
+const dbg = debug('app:Menu')
+
 export default class Menu {
   constructor () {
+    dbg('Initialize Menu')
     this.initElements()
     this.initEvents()
-    this.open = false
+    this.isOpen = false
 
     TweenMax.set(this.$els.navLinks, {autoAlpha: 0})
 
     this.openTimeline = new TimelineMax({paused: true})
+      .to('section', 0.2, {autoAlpha: 0}, 'start')
       .fromTo('nav', 0.4, {autoAlpha: 0}, {height: '90vh', width: '89vw', autoAlpha: 1, ease: Power1.easeIn}, 'start')
       .to('main', 0.4, {scale: 1.15, ease: Power1.easeIn}, 'start')
       .addCallback(this.toggleTriggerClass.bind(this), 'start+=0.5')
@@ -26,13 +30,27 @@ export default class Menu {
   }
 
   onMenuTriggerClick () {
-    if (!this.open) {
-      this.openTimeline.timeScale(1).play()
+    if (!this.isOpen) {
+      this.open()
     } else {
-      this.openTimeline.timeScale(1.3).reverse()
+      this.close()
     }
+  }
 
-    this.open = !this.open
+  open () {
+    if (!this.isOpen) {
+      dbg('open menu')
+      this.openTimeline.timeScale(1).play()
+      this.isOpen = true
+    }
+  }
+
+  close () {
+    if (this.isOpen) {
+      dbg('close menu')
+      this.openTimeline.timeScale(1.3).reverse()
+      this.isOpen = false
+    }
   }
 
   toggleTriggerClass () {
