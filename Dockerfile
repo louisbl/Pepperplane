@@ -1,4 +1,4 @@
-FROM node
+FROM nginx
 
 RUN apt-get update && apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
@@ -9,6 +9,6 @@ COPY . /home/tmp
 WORKDIR /home/tmp
 
 RUN npm install
-RUN npm run build
+RUN npm run deploy:prod
 
 COPY /home/tmp/dist /usr/share/nginx/html
