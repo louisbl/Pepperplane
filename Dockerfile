@@ -11,4 +11,4 @@ WORKDIR /home/tmp
 RUN npm install
 RUN npm run deploy:prod
 
-COPY /home/tmp/dist /usr/share/nginx/html
+COPY /home/tmp/dist/* /usr/share/nginx/html
