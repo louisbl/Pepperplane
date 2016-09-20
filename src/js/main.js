@@ -12,7 +12,8 @@ if (module.hot) {
 }
 
 const ui = new Ui()
-new Menu()
+const menu = new Menu()
+console.log(typeof menu)
 
 domready(() => {
   ui.hideLoading()
