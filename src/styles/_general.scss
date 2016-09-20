@@ -1,5 +1,5 @@
 html, body {
-  background-color: #C9D6DF;
+  font-family: Brandon, sans-serif;
 }
 
 section {
@@ -40,6 +40,7 @@ main {
   width: 90vw;
   height: 90vh;
   background-color: #1E2022;
+  transform: scale(0);
 }
 
 .load {

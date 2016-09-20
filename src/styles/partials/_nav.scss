@@ -1,68 +1,48 @@
 $menu: 3px;
 
-.nav__trigger{
+.nav-trigger{
   position: fixed;
   display: inline-block;
-  height: 5px;
+  height: 40px;
   width: 50px;
   top: 50%;
-  left: calc((5vw - 50px) / 2);
-  background-color: #52616B;
+  left: 2.5vw;
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  transition: all 0.25s;
   z-index: 10;
 
-  &:before, &:after{
-    content: '';
+  &-bar {
     position: absolute;
+    height: 6px;
+    background-color: #2d2d2d;
+    width: 100%;
     left: 50%;
-    height: 5px;
-    width: 50px;
-    background-color: #52616B;
-    transition: all 0.25s;
-  }
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: 50% 50%;
 
-  &:before{
-    transform: translate3d(-50%, -350%, 0);
-  }
-
-  &:after{
-    transform: translate3d(-50%, 350%, 0);
-  }
-
-  &.active {
-    background-color: #c9d6df;
-    border-radius: 45px 0 0 45px;
-
-    &:after, &:before {
-      background-color: #c9d6df;
-      width: 25px;
+    &:nth-child(1){
+      top: 0;
     }
 
-    &:before{
-      transform: translate3d(-100%, -200%, 0) rotate(-45deg);
+    &:nth-child(2){
+      top: 50%;
     }
 
-    &:after{
-      transform: translate3d(-100%, 200%, 0) rotate(45deg);
-    }
-  }
-
-  &:hover {
-    &:before, &:after {
-      width: 25px;
+    &:nth-child(3){
+      top: 100%;
     }
   }
 }
 
 nav {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 5vH;
+  left: -100vw;
+  height: 90vh;
+  width: 45vw;
   background-color: #C9D6DF;
-  height: 0;
-  width: 0;
   z-index: 5;
 }
 
@@ -76,9 +56,31 @@ nav {
     text-align: center;
 
     li {
-      font-size: 55px;
-      padding: 25px 0;
+      font-size: 50px;
+      font-weight: 100;
+      margin-bottom: 100px;
       text-transform: uppercase;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
+
+      &:nth-child(n+2):before{
+        content: '';
+        transition: opacity 0.5s;
+        opacity: 0;
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        width: 10px;
+        transform: translateX(-50%) rotate(45deg);
+        height: 10px;
+        background-color: #2d2d2d;
+      }
+
+      &:nth-child(n+2).active:before{
+        opacity: 1;
+      }
     }
   }
 }

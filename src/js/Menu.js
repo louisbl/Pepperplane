@@ -11,15 +11,21 @@ export default class Menu {
 
     this.openTimeline = new TimelineMax({paused: true})
       .to('section', 0.2, {autoAlpha: 0}, 'start')
-      .fromTo('nav', 0.4, {autoAlpha: 0}, {height: '90vh', width: '89vw', autoAlpha: 1, ease: Power1.easeIn}, 'start')
-      .to('main', 0.4, {scale: 1.15, ease: Power1.easeIn}, 'start')
-      .addCallback(this.toggleTriggerClass.bind(this), 'start+=0.5')
-      .staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, ease: Power3.easeOut}, 0.3, 'start+=1')
+      .to('main', 0.4, {left: '50vw', width: '45vw', ease: Power1.easeIn}, 'start')
+      .to('nav', 0.4, {left: '5vw', ease: Power1.easeIn}, 'start')
+      .to(this.$els.navTrigger, 0.4, {left: '+=5%'}, 'start')
+      .to('.nav-trigger-bar:nth-child(2)', 0.2, {autoAlpha: 0}, 'start+0.2')
+      .to('.nav-trigger-bar:first-child', 0.2, {top: '50%'}, 'start+0.2')
+      .to('.nav-trigger-bar:last-child', 0.2, {top: '50%'}, 'start+0.2')
+      .to('.nav-trigger-bar:first-child', 0.2, {rotation: 45}, 'start+0.4')
+      .to('.nav-trigger-bar:last-child', 0.2, {rotation: -45}, 'start+0.4')
+      .staggerFromTo(this.$els.navLinks, 0.5, {x: -50, autoAlpha: 0}, {x: 0, autoAlpha: 1, ease: Power3.easeOut}, 0.3, 'start+1')
+      .call(this.triggerNavLinksBefore, null, this, 1.5)
   }
 
   initElements () {
     this.$els = {
-      navTrigger: document.getElementsByClassName('nav__trigger')[0],
+      navTrigger: document.getElementsByClassName('nav-trigger')[0],
       nav: document.getElementsByTagName('nav')[0],
       navLinks: document.querySelectorAll('.nav__content li')
     }
@@ -37,6 +43,13 @@ export default class Menu {
     }
   }
 
+  triggerNavLinksBefore () {
+    dbg('call toggle')
+    for (let i = 0; i < this.$els.navLinks.length; i++) {
+      this.$els.navLinks[i].classList.toggle('active')
+    }
+  }
+
   open () {
     if (!this.isOpen) {
       dbg('open menu')
@@ -51,9 +64,5 @@ export default class Menu {
       this.openTimeline.timeScale(1.3).reverse()
       this.isOpen = false
     }
-  }
-
-  toggleTriggerClass () {
-    this.$els.navTrigger.classList.toggle('active')
   }
 }
